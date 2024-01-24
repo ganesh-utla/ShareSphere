@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 import { useUserContext } from "@/context/AuthContext";
 import { useDebounce } from "@/hooks";
 import { useGetAllUsers, useSearchUsers } from "@/lib/react-query/queriesAndMutations";
+import { Models } from "appwrite";
 import { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer";
 
@@ -69,7 +70,7 @@ const AllUsers = () => {
         ) : (
           users.pages.map((item, index) => (
             <ul className="user-grid" key={index}>
-              {item?.documents.filter(user => user.$id !== currentUser.id).map((user) => (
+              {item?.documents.filter((user: Models.Document) => user.$id !== currentUser.id).map((user: Models.Document) => (
                 <li key={user.$id} className="flex-1 min-w-[200px] w-full">
                   <UserCard user={user} key={user.$id} />
                 </li>

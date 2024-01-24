@@ -1,6 +1,7 @@
 import { Loader, PostCard, UserCard } from "@/components/shared";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetAllUsers, useGetRecentPosts } from "@/lib/react-query/queriesAndMutations"
+import { Models } from "appwrite";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -40,7 +41,7 @@ const Home = () => {
           ) : (
             <ul className="flex flex-col gap-9 w-full">
               {posts?.pages.map((docs) => (
-                docs?.documents.map((post) => (
+                docs?.documents.map((post: Models.Document) => (
                   <li key={post.$id} className="flex justify-center w-full">
                     <PostCard post={post} />
                   </li>
@@ -65,7 +66,7 @@ const Home = () => {
         ) : (
           <ul className="grid 2xl:grid-cols-2 gap-6">
             {creators?.pages.map((docs) => (
-              docs?.documents.filter(creator => creator.$id !== currentUser.id).map((creator) => (
+              docs?.documents.filter((creator: Models.Document) => creator.$id !== currentUser.id).map((creator: Models.Document) => (
                 <li key={creator?.$id}>
                   <UserCard user={creator} />
                 </li>
