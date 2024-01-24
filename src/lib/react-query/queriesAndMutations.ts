@@ -84,13 +84,14 @@ export const useDeletePost = () => {
 export const useGetRecentPosts = () => {
     return useInfiniteQuery({
         queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
-        queryFn: getRecentPosts,
-        getNextPageParam: (lastPage) => {
+        queryFn: getRecentPosts as any,
+        initialPageParam: undefined,
+        getNextPageParam: (lastPage: any) => {
             if (lastPage && lastPage.documents.length===0)
                 return null;
             const lastId = lastPage?.documents[lastPage.documents.length - 1].$id;
             return lastId;
-        }
+        },
     })
 }
 
@@ -162,8 +163,9 @@ export const useDeleteSavedPost = () => {
 export const useGetInfinitePosts = () => {
     return useInfiniteQuery({
         queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
-        queryFn: getInfinitePosts,
-        getNextPageParam: (lastPage) => {
+        queryFn: getInfinitePosts as any,
+        initialPageParam: undefined,
+        getNextPageParam: (lastPage: any) => {
             if (lastPage && lastPage.documents.length===0)
                 return null;
             const lastId = lastPage?.documents[lastPage.documents.length - 1].$id;
@@ -183,8 +185,9 @@ export const useSearchPosts = (searchTerm: string) => {
 export const useGetAllUsers = () => {
     return useInfiniteQuery({
         queryKey: [QUERY_KEYS.GET_USERS],
-        queryFn: getUsers,
-        getNextPageParam: (lastPage) => {
+        queryFn: getUsers as any,
+        initialPageParam: undefined,
+        getNextPageParam: (lastPage: any) => {
             if (lastPage && lastPage.documents.length===0)
                 return null;
             const lastId = lastPage?.documents[lastPage.documents.length - 1].$id;

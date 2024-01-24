@@ -14,7 +14,7 @@ const AuthLayout = () => {
           <section className="flex flex-1 flex-col justify-center items-center pt-20 pb-10 overflow-auto custom-scrollbar scroll-transparent">
             <Outlet />
           </section>
-          <div className="hidden lg:flex relative h-screen w-1/2 justify-center items-center globe-bg">
+          <div className="hidden lg:flex relative h-screen w-1/2 justify-center items-end globe-bg">
             <img
               src="/assets/images/rocket.png"
               alt="rocket"
