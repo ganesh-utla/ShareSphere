@@ -18,6 +18,7 @@ client.setEndpoint(appwriteConfig.url);
 client.headers = {
     'X-Appwrite-Project': appwriteConfig.projectId,
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
 };
 
 export const account = new Account(client);
