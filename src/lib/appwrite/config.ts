@@ -15,6 +15,10 @@ export const client = new Client();
 
 client.setProject(appwriteConfig.projectId);
 client.setEndpoint(appwriteConfig.url);
+client.headers = {
+    'X-Appwrite-Project': appwriteConfig.projectId,
+    'Content-Type': 'application/json',
+};
 
 export const account = new Account(client);
 export const databases = new Databases(client);
