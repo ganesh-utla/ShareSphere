@@ -1,30 +1,42 @@
-# React + TypeScript + Vite
+# Sharesphere - Where Connections & Content Collide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+Welcome to Sharesphere, a social media platform designed to connect people and facilitate sharing of thoughts, ideas, and experiences. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- User Registration and Authentication
+- User Profiles
+- Posting and Sharing Content
+- Commenting on Posts
+- Friend Connections/Followers
+- Exploring users and posts
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend:** TypeScript, ReactJS
+- **Backend and Database** Appwrite
+- **Styling:** TailwindCSS, ShadCN/UI
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+   
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm install
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Contributing
+
+We welcome contributions from everyone even the beginners.
+
+---
+
+LinkedIn - [Ganesh Utla](https://www.linkedin.com/in/ganesh-utla-888abc/)
+
+Happy coding!
