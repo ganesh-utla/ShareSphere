@@ -160,7 +160,7 @@ const PostDetails = () => {
       {
         showComments && post?.comments && (  
         <div className="w-full max-w-5xl flex flex-col items-start justify-start gap-5">
-          {post.comments.map((comment: Models.Document) => (
+          {post.comments.reverse().map((comment: Models.Document) => (
             <CommentCard comment={comment} key={comment.$id} postId={post.$id} />
           ))}
         </div>
