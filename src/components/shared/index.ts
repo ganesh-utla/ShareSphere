@@ -11,6 +11,7 @@ import SearchResults from "./SearchResults";
 import Topbar from "./Topbar";
 import UserCard from "./UserCard";
 import RelatedPosts from "./RelatedPosts";
+import CommentCard from "./CommentCard";
 
 export {
     Bottombar,
@@ -25,5 +26,6 @@ export {
     SearchResults,
     Topbar,
     UserCard,
-    RelatedPosts
+    RelatedPosts,
+    CommentCard
 }

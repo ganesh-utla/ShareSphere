@@ -23,7 +23,7 @@ const RelatedPosts = ({ userId, postId } : RelatedPostsProps) => {
   }
 
   return (
-    <div className="w-full max-w-5xl">
+    <div className="w-full max-w-5xl mt-5">
         <hr className="border w-full border-light-3" />
 
         <h3 className="body-bold md:h3-bold w-full my-10">

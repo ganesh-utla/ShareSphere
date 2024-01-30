@@ -57,7 +57,7 @@ const Explore = () => {
         <h3 className="body-bold md:h3-bold">
           Popular Today
         </h3>
-        <div className="flex-center bg-light-6 py-2 px-4 gap-3 rounded-xl cursor-pointer hover:bg-light-7">
+        <div className="flex-center bg-light-6 py-2 px-4 gap-3 rounded-xl cursor-pointer hover:bg-light-7" onClick={() => setSearchValue("")}>
           <p className="text-light-4">
             All
           </p>

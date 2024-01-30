@@ -2,22 +2,21 @@ import { useDeleteSavedPost, useGetCurrentUser, useLikePost, useSavePost } from 
 import { checkIsLiked } from "@/lib/utils";
 import { Models } from "appwrite"
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import ShareCard from "./ShareCard";
 
 type PostStatsProps = {
     post: Models.Document;
     userId: string;
     isGridCard?: boolean;
+    handleCommentClick?: () => void
 }
 
-const PostStats = ({ post, userId, isGridCard=false } : PostStatsProps) => {
+const PostStats = ({ post, userId, handleCommentClick, isGridCard=false } : PostStatsProps) => {
   
   const likesArray = post.likes.map((user: Models.Document) => user.$id);
   const [likes, setLikes] = useState<string[]>(likesArray);
   const [isSaved, setIsSaved] = useState(false);
   const [share, setShare] = useState(false);
-  const navigate = useNavigate();
 
   const { mutateAsync: likePost } = useLikePost();
   const { mutateAsync: savePost } = useSavePost();
@@ -71,14 +70,14 @@ const PostStats = ({ post, userId, isGridCard=false } : PostStatsProps) => {
             </div>
             {
                 !isGridCard &&
-                <div className='flex gap-3 items-center cursor-pointer' onClick={() => navigate(`/repost/${post.$id}`)}>
+                <div className='flex gap-3 items-center cursor-pointer' onClick={handleCommentClick}>
                     <img
-                        src="/assets/icons/back.svg"
+                        src="/assets/icons/comment.svg"
                         alt="like-button"
-                        className='w-6 h-6'
+                        className='w-8 h-8'
                     />
                     <p className='hidden xs:block small-medium lg:base-medium'>
-                        Repost
+                        Comment
                     </p>
                 </div>
             }
@@ -98,7 +97,7 @@ const PostStats = ({ post, userId, isGridCard=false } : PostStatsProps) => {
                     <img
                         src="/assets/icons/share.svg"
                         alt="like-button"
-                        className='w-6 h-6'
+                        className='w-8 h-8'
                     />
                     <p className='hidden xs:block small-medium lg:base-medium'>
                         Share

@@ -13,7 +13,7 @@ const ShareCard = ({ post, share, setShare } : ShareCardProps) => {
 
     const [linkCopied, setLinkCopied] = useState(false);
 
-    const url = `http://localhost:5173/posts/${post.$id}`;
+    const url = `https://share-sphere.vercel.app/posts/${post.$id}`;
     const message = `Hey%2C%20Check%20out%20this%20post%3A%0A${url}`;
 
   return (
@@ -32,9 +32,9 @@ const ShareCard = ({ post, share, setShare } : ShareCardProps) => {
                             </p>
                         </div>
                         <h3 className='h3-bold'>Share Post</h3>
-                        <div className='mt-3 relative flex max-xs:flex-col  gap-5 justify-center bg-light-6 border border-light-7 text-dark-3 p-3 rounded-md max-h-40 overflow-auto'>
+                        <div className='mt-3 relative flex max-xs:flex-col gap-5 justify-center items-center bg-light-6 border border-light-7 text-dark-3 p-3 rounded-md max-h-40 overflow-auto'>
                             <div className='break-all'>{url}</div>
-                            <div className='sticky top-1 right-1 flex justify-center items-center p-2 h-min min-w-max bg-primary-500 rounded-md cursor-pointer'
+                            <div className='max-xs:w-full flex justify-center items-center px-2 h-8 bg-primary-500 rounded-md cursor-pointer'
                                 onClick={() => {
                                     setLinkCopied(true);
                                     navigator.clipboard.writeText(url);

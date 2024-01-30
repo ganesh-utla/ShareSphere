@@ -1,12 +1,13 @@
 import { useUserContext } from '@/context/AuthContext'
 import { multiFormatDateString } from '@/lib/utils';
 import { Models } from 'appwrite'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { PostStats } from '.';
 
 const PostCard = ({ post } : { post : Models.Document }) => {
 
   const { user } = useUserContext();
+  const navigate = useNavigate();
 
   return (
     <div key={post.$id} className="post-card flex flex-col gap-5">
@@ -30,13 +31,22 @@ const PostCard = ({ post } : { post : Models.Document }) => {
                     </p>
                 </div>
             </div>
-            <Link to={`/update-post/${post.$id}`} className={`${user.id!==post.creator.$id && "hidden"}`}>
-                <img
-                    src="/assets/icons/edit.svg"
-                    alt="edit-post"
-                    className='w-6 h-6'
-                />
-            </Link>
+            <div className='flex justify-center items-center gap-3'>
+                <Link to={`/update-post/${post.$id}`} className={`cursor-pointer ${user.id!==post.creator.$id && "hidden"}`}>
+                    <img
+                        src="/assets/icons/edit.svg"
+                        alt="edit-post"
+                        className='w-6 h-6'
+                    />
+                </Link>
+                <Link to={`/repost/${post.$id}`} className='cursor-pointer'>
+                    <img
+                        src="/assets/icons/repost.svg"
+                        alt="edit-post"
+                        className='w-8 h-8'
+                    />
+                </Link>
+            </div>
         </div>
 
         <div className='small-medium lg:base-medium'>
@@ -60,7 +70,7 @@ const PostCard = ({ post } : { post : Models.Document }) => {
             />
         </Link>
 
-        <PostStats post={post} userId={user.id} />
+        <PostStats post={post} userId={user.id} handleCommentClick={() => navigate(`/posts/${post.$id}`)} />
     </div>
   )
 }

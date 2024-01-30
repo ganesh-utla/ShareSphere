@@ -1,4 +1,4 @@
-import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
+import { INewComment, INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import { account, appwriteConfig, avatars, databases, storage } from "./config";
 import { ID, Query } from "appwrite";
 
@@ -535,6 +535,47 @@ export async function followUser (userId: string, followersArray: string[]) {
         )
         if (!updatedUser) throw Error;
         return updatedUser;
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function postComment(comment: INewComment) {
+    try {
+
+        const newComment = await databases.createDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.commentsCollectionId,
+            ID.unique(),
+            {
+                creator: comment.userId,
+                comment: comment.comment,
+                post: comment.postId
+            }
+        )
+
+        if (!newComment) throw Error;
+
+        return newComment;
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function deleteComment(commentId: string) {
+    try {
+
+        const deletedComment = await databases.deleteDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.commentsCollectionId,
+            commentId
+        )
+
+        if (!deletedComment) throw Error;
+
+        return { status: "ok" };
         
     } catch (error) {
         console.log(error);
