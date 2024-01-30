@@ -15,11 +15,6 @@ export const client = new Client();
 
 client.setProject(appwriteConfig.projectId);
 client.setEndpoint(appwriteConfig.url);
-client.headers = {
-    'X-Appwrite-Project': appwriteConfig.projectId,
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
-};
 
 export const account = new Account(client);
 export const databases = new Databases(client);
