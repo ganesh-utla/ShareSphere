@@ -264,7 +264,11 @@ export function getFilePreview (fileId: string) {
 
         const fileUrl = storage.getFilePreview(
             appwriteConfig.storageId,
-            fileId
+            fileId,
+            undefined,
+            undefined,
+            undefined,
+            60
         )
 
         return fileUrl;
